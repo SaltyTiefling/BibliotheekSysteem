@@ -88,6 +88,18 @@
     <Compile Include="BoekenGenre.cs">
       <DependentUpon>BibliotheekModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EditGenreList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditGenreList.Designer.cs">
+      <DependentUpon>EditGenreList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenreForm.Designer.cs">
+      <DependentUpon>GenreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +109,12 @@
     <Compile Include="Genre.cs">
       <DependentUpon>BibliotheekModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AuteurForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuteurForm.Designer.cs">
+      <DependentUpon>AuteurForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagram.cs">
@@ -105,11 +123,26 @@
     <Compile Include="Uitgeverijen.cs">
       <DependentUpon>BibliotheekModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UitgeverijenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UitgeverijenForm.Designer.cs">
+      <DependentUpon>UitgeverijenForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BoekForm.resx">
       <DependentUpon>BoekForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditGenreList.resx">
+      <DependentUpon>EditGenreList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenreForm.resx">
+      <DependentUpon>GenreForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuteurForm.resx">
+      <DependentUpon>AuteurForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -120,6 +153,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UitgeverijenForm.resx">
+      <DependentUpon>UitgeverijenForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="BibliotheekModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BibliotheekModel.Designer.cs</LastGenOutput>
