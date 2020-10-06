@@ -126,5 +126,79 @@ namespace BibliotheekSysteem
             }
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            using (BibliotheekEntities ctx = new BibliotheekEntities())
+            {
+                switch (cbxTables.SelectedItem)
+                {
+                    case "Auteur":
+                        Auteur auteur = ctx.Auteurs.Where(s=>s.Id == (int)lbxVieuw.SelectedValue).FirstOrDefault();
+                        if (MessageBox.Show($"are you sure wyou want do delete {auteur.Voornaam} {auteur.Achternaam}?", "delete Auteur", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            ctx.BoekenAuteurs.RemoveRange(auteur.BoekenAuteurs);
+                            ctx.Auteurs.Remove(auteur);
+                        }
+
+                        break;
+
+                    case "Uitgeverijen":
+                        Uitgeverijen uitgeverij = ctx.Uitgeverijens.Where(s => s.Id == (int)lbxVieuw.SelectedValue).FirstOrDefault();
+                        if (MessageBox.Show($"are you sure wyou want do delete {uitgeverij.Naam}?", "delete uitgeverij", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            foreach (var item in uitgeverij.Boekens)
+                            {
+                                item.UitgeverId = null;
+                            };
+                            ctx.Uitgeverijens.Remove(uitgeverij);
+                        }
+
+                        break;
+
+                    case "Genre":
+                        Genre genre = ctx.Genres.Where(s => s.Id == (int)lbxVieuw.SelectedValue).FirstOrDefault();
+                        if (MessageBox.Show($"are you sure wyou want do delete {genre.Genre1}?", "delete genre", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            ctx.BoekenGenres.RemoveRange(genre.BoekenGenres);
+                            ctx.Genres.Remove(genre);
+                        }
+
+                        break;
+
+                    case "BoekenAuteur":
+                        BoekenAuteur boekenAuteur = ctx.BoekenAuteurs.Where(s => s.Id == (int)lbxVieuw.SelectedValue).FirstOrDefault();
+                        if (MessageBox.Show($"are you sure you want do delete the connection between {boekenAuteur.Boeken.Titel} and {boekenAuteur.Auteur.Voornaam} {boekenAuteur.Auteur.Achternaam}?", "delete boek <-> auteur relatie", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            ctx.BoekenAuteurs.Remove(boekenAuteur);
+                        }
+
+                        break;
+
+                    case "BoekenGenre":
+                        BoekenGenre boekenGenre = ctx.BoekenGenres.Where(s => s.Id == (int)lbxVieuw.SelectedValue).FirstOrDefault();
+                        if (MessageBox.Show($"are you sure you want do delete the connection between {boekenGenre.Boeken.Titel} and {boekenGenre.Genre.Genre1}?", "delete boek <-> genre relatie", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            ctx.BoekenGenres.Remove(boekenGenre);
+                        }
+
+                        break;
+
+                    default:
+                        Boeken boek = ctx.Boekens.Where(s => s.Id == (int)lbxVieuw.SelectedValue).FirstOrDefault();
+                        if (MessageBox.Show($"are you sure you want do delete {boek.Titel}?", "delete boek", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            ctx.BoekenAuteurs.RemoveRange(boek.BoekenAuteurs);
+                            ctx.BoekenGenres.RemoveRange(boek.BoekenGenres);
+                            ctx.Boekens.Remove(boek);
+                        }
+
+                        break;
+
+                }
+                ctx.SaveChanges();
+                LaadList();
+            }
+        }
     }
 }

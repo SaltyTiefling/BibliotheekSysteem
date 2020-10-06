@@ -25,23 +25,40 @@ namespace BibliotheekSysteem
             {
                 var query = ctx.Boekens.Where(b => b.Id == selectedID).FirstOrDefault();
                 txtTitel.Text = query.Titel;
+
+                txtGenres.Text = null;
                 foreach (var genre in query.BoekenGenres.Select(s => new { s, display = s.Genre.Genre1 }).ToList())
                 {
-                    txtGenres.Text += genre.display + Environment.NewLine;
+                    txtGenres.Text += "- " + genre.display + Environment.NewLine;
                 }
 
+                txtAuteurs.Text = null;
                 foreach (var auteur in query.BoekenAuteurs.Select(s => new { s, display = s.Auteur.Achternaam + " " + s.Auteur.Voornaam }).ToList())
                 {
-                    txtAuteurs.Text += auteur.display + Environment.NewLine;
+                    txtAuteurs.Text += "- " + auteur.display + Environment.NewLine;
                 }
 
                 numPaginas.Value = query.AantalPaginas.Value;
                 dtpPublicatie.Value = query.Publicatie.Value;
                 numScore.Value = query.Score.Value;
+
                 cbUitgever.DataSource = ctx.Uitgeverijens.Select(s => new { s, display = s.Naam }).ToList();
-                cbUitgever.DisplayMember = "display";
-                cbUitgever.ValueMember = "s";
-                cbUitgever.SelectedValue = query.Uitgeverijen;
+
+                cbUitgever.DataSource = null;
+                if (query.Uitgeverijen != null || cbUitgever.Enabled)
+                {
+                    cbUitgever.DataSource = ctx.Uitgeverijens.Select(s => new { s, display = s.Naam }).ToList();
+                    cbUitgever.DisplayMember = "display";
+                    cbUitgever.ValueMember = "s";
+                }
+
+
+
+                if (query.Uitgeverijen != null)
+                {
+                    cbUitgever.SelectedValue = query.Uitgeverijen;
+                }
+
             }
         }
 
@@ -55,6 +72,7 @@ namespace BibliotheekSysteem
         private void btnlock_Click(object sender, EventArgs e)
         {
             locking();
+            laadboek();
         }
 
         private void locking()
@@ -73,7 +91,6 @@ namespace BibliotheekSysteem
             btnUpdate.Enabled = editable;
             btnEditAuteurs.Visible = editable;
             btnEditGenres.Visible = editable;
-
         }
 
         private void btnEditGenres_Click(object sender, EventArgs e)
@@ -126,7 +143,6 @@ namespace BibliotheekSysteem
                 boek.AantalPaginas = 0;
                 boek.Score = 0;
                 boek.Publicatie = DateTime.Now;
-                boek.UitgeverId = ctx.Uitgeverijens.FirstOrDefault().Id;
 
                 ctx.Boekens.Add(boek);
                 ctx.SaveChanges();

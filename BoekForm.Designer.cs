@@ -74,7 +74,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 296);
+            this.label3.Location = new System.Drawing.Point(12, 358);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 4;
@@ -83,7 +83,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 321);
+            this.label4.Location = new System.Drawing.Point(12, 383);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 5;
@@ -92,7 +92,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 348);
+            this.label5.Location = new System.Drawing.Point(12, 410);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 6;
@@ -101,7 +101,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 378);
+            this.label6.Location = new System.Drawing.Point(12, 440);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 13);
             this.label6.TabIndex = 7;
@@ -137,7 +137,7 @@
             // btnEditAuteurs
             // 
             this.btnEditAuteurs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditAuteurs.Location = new System.Drawing.Point(135, 265);
+            this.btnEditAuteurs.Location = new System.Drawing.Point(135, 327);
             this.btnEditAuteurs.Name = "btnEditAuteurs";
             this.btnEditAuteurs.Size = new System.Drawing.Size(75, 23);
             this.btnEditAuteurs.TabIndex = 18;
@@ -170,7 +170,7 @@
             // 
             this.numScore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.numScore.Location = new System.Drawing.Point(100, 319);
+            this.numScore.Location = new System.Drawing.Point(100, 381);
             this.numScore.Name = "numScore";
             this.numScore.Size = new System.Drawing.Size(110, 20);
             this.numScore.TabIndex = 16;
@@ -179,7 +179,7 @@
             // 
             this.numPaginas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.numPaginas.Location = new System.Drawing.Point(100, 294);
+            this.numPaginas.Location = new System.Drawing.Point(100, 356);
             this.numPaginas.Name = "numPaginas";
             this.numPaginas.Size = new System.Drawing.Size(110, 20);
             this.numPaginas.TabIndex = 22;
@@ -190,7 +190,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpPublicatie.CustomFormat = "dd MMM yyyy";
             this.dtpPublicatie.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpPublicatie.Location = new System.Drawing.Point(100, 345);
+            this.dtpPublicatie.Location = new System.Drawing.Point(100, 407);
             this.dtpPublicatie.Name = "dtpPublicatie";
             this.dtpPublicatie.Size = new System.Drawing.Size(110, 20);
             this.dtpPublicatie.TabIndex = 23;
@@ -200,9 +200,9 @@
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(15, 397);
+            this.btnUpdate.Location = new System.Drawing.Point(15, 459);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(195, 34);
+            this.btnUpdate.Size = new System.Drawing.Size(195, 43);
             this.btnUpdate.TabIndex = 24;
             this.btnUpdate.Text = "Done";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -217,7 +217,7 @@
             this.txtGenres.Name = "txtGenres";
             this.txtGenres.ReadOnly = true;
             this.txtGenres.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtGenres.Size = new System.Drawing.Size(110, 95);
+            this.txtGenres.Size = new System.Drawing.Size(110, 100);
             this.txtGenres.TabIndex = 25;
             // 
             // txtAuteurs
@@ -229,7 +229,7 @@
             this.txtAuteurs.Name = "txtAuteurs";
             this.txtAuteurs.ReadOnly = true;
             this.txtAuteurs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAuteurs.Size = new System.Drawing.Size(110, 38);
+            this.txtAuteurs.Size = new System.Drawing.Size(110, 100);
             this.txtAuteurs.TabIndex = 26;
             // 
             // btnlock
@@ -247,7 +247,7 @@
             // cbUitgever
             // 
             this.cbUitgever.FormattingEnabled = true;
-            this.cbUitgever.Location = new System.Drawing.Point(100, 370);
+            this.cbUitgever.Location = new System.Drawing.Point(100, 432);
             this.cbUitgever.Name = "cbUitgever";
             this.cbUitgever.Size = new System.Drawing.Size(110, 21);
             this.cbUitgever.TabIndex = 28;
@@ -267,7 +267,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 441);
+            this.ClientSize = new System.Drawing.Size(234, 514);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.cbUitgever);
             this.Controls.Add(this.btnlock);
