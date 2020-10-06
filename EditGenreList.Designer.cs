@@ -121,6 +121,7 @@
             this.Controls.Add(this.lbxAvailableGenres);
             this.Controls.Add(this.cbBoek);
             this.Controls.Add(this.lbxCurrentGenres);
+            this.MinimumSize = new System.Drawing.Size(368, 221);
             this.Name = "EditGenreList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EditGenres";

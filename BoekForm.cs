@@ -91,7 +91,14 @@ namespace BibliotheekSysteem
 
         private void btnEditAuteurs_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Auteurs");
+            EditAuteurList editAuteurList = new EditAuteurList();
+            editAuteurList.boekenLijst.Clear();
+            using (BibliotheekEntities ctx = new BibliotheekEntities())
+            {
+                Boeken boek = ctx.Boekens.Where(s => s.Id == selectedID).FirstOrDefault();
+                editAuteurList.boekenLijst.Add(boek.Id, boek.Titel);
+            }
+            editAuteurList.ShowDialog();
             laadboek();
         }
 

@@ -41,10 +41,10 @@ namespace BibliotheekSysteem
             using (BibliotheekEntities ctx = new BibliotheekEntities())
             {
                 lbxCurrentGenres.DataSource =
-                    ctx.BoekenGenres.Where(s => s.BoekId == (int)cbBoek.SelectedValue).Select(s => new { s, display = s.Genre.Genre1 })
+                    ctx.BoekenGenres.Where(s => s.BoekId == (int)cbBoek.SelectedValue).Select(s => new {id = s.Id, display = s.Genre.Genre1 })
                     .ToList();
                 lbxCurrentGenres.DisplayMember = "display";
-                lbxCurrentGenres.ValueMember = "s";
+                lbxCurrentGenres.ValueMember = "id";
 
                 lbxAvailableGenres.DataSource = ctx.Genres.Where(g => !(ctx.BoekenGenres.Where(s => s.BoekId == (int)cbBoek.SelectedValue).Select(s => s.Genre.Genre1)
                     .ToList().Contains(g.Genre1))).Select(s => new { s, display = s.Genre1 }).ToList();
@@ -63,8 +63,7 @@ namespace BibliotheekSysteem
             using (BibliotheekEntities ctx = new BibliotheekEntities())
             {
                 BoekenGenre query = (lbxCurrentGenres.SelectedValue as BoekenGenre);
-                //ctx.BoekenGenres.Remove(ctx.BoekenGenres.Where(s => s.BoekId == (int)cbBoek.SelectedValue && s.GenreId == (lbxCurrentGenres.SelectedValue as BoekenGenre).GenreId).FirstOrDefault());
-                ctx.BoekenGenres.Remove(query);
+                ctx.BoekenGenres.RemoveRange(ctx.BoekenGenres.Where(s => s.Id == (int)lbxCurrentGenres.SelectedValue));
                 ctx.SaveChanges();
 
             }

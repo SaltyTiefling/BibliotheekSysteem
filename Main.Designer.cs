@@ -39,7 +39,6 @@
             // btnview
             // 
             this.btnview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnview.Enabled = false;
             this.btnview.Location = new System.Drawing.Point(325, 16);
             this.btnview.Name = "btnview";
             this.btnview.Size = new System.Drawing.Size(101, 36);

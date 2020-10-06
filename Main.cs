@@ -25,26 +25,20 @@ namespace BibliotheekSysteem
                 {
                     case "Auteur":
                         lbxVieuw.DataSource = ctx.Auteurs.Select(s => new { id = s.Id, Naam = s.Voornaam + " " + s.Achternaam }).ToList();
-                        btnview.Enabled = true;
                         break;
                     case "Uitgeverijen":
                         lbxVieuw.DataSource = ctx.Uitgeverijens.Select(s => new { id = s.Id, Naam = s.Naam }).ToList();
-                        btnview.Enabled = true;
                         break;
                     case "Genre":
                         lbxVieuw.DataSource = ctx.Genres.Select(s => new { id = s.Id, Naam = s.Genre1 }).ToList();
-                        btnview.Enabled = true;
                         break;
                     case "BoekenAuteur":
-                        btnview.Enabled = false;
                         lbxVieuw.DataSource = ctx.BoekenAuteurs.Select(s => new { id = s.Id, Naam = s.Boeken.Titel + " => " + s.Auteur.Voornaam + " " + s.Auteur.Achternaam }).ToList();
                         break;
                     case "BoekenGenre":
-                        btnview.Enabled = true;
                         lbxVieuw.DataSource = ctx.BoekenGenres.Select(s => new { id = s.Id, Naam = s.Boeken.Titel + " => " + s.Genre.Genre1 }).ToList();
                         break;
                     default:
-                        btnview.Enabled = true;
                         lbxVieuw.DataSource = ctx.Boekens.Select(s => new { id = s.Id, Naam = s.Titel }).ToList();
                         break;
                 }
@@ -90,19 +84,28 @@ namespace BibliotheekSysteem
                         nieuweAuteur.selectedID = (int)lbxVieuw.SelectedValue;
                         nieuweAuteur.ShowDialog();
                         break;
+
                     case "Uitgeverijen":
                         UitgeverijenForm uitgeverijenForm = new UitgeverijenForm();
                         uitgeverijenForm.selectedID = (int)lbxVieuw.SelectedValue;
                         uitgeverijenForm.ShowDialog();
                         break;
+
                     case "Genre":
                         GenreForm genreForm = new GenreForm();
                         genreForm.selectedID = (int)lbxVieuw.SelectedValue;
                         genreForm.ShowDialog();
                         break;
-                    case "BoekenAuteur":
 
+                    case "BoekenAuteur":
+                        EditAuteurList ea = new EditAuteurList();
+                        foreach (var item in ctx.Boekens.Select(s => s))
+                        {
+                            ea.boekenLijst.Add(item.Id, item.Titel);
+                        }
+                        ea.ShowDialog();
                         break;
+
                     case "BoekenGenre":
                         EditGenreList eg = new EditGenreList();
                         foreach (var item in ctx.Boekens.Select(s => s))
@@ -111,11 +114,13 @@ namespace BibliotheekSysteem
                         }
                         eg.ShowDialog();
                         break;
+
                     default:
                         BoekForm boekform = new BoekForm();
                         boekform.selectedID = (int)lbxVieuw.SelectedValue;
                         boekform.ShowDialog();
                         break;
+
                 }
                 LaadList();
             }
